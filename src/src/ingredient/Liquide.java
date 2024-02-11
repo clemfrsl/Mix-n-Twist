@@ -1,4 +1,5 @@
 package ingredient;
 
-public interface Liquide extends Ingredient{
+public interface Liquide extends Ingredient {
+
 }

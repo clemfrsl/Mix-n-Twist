@@ -1,11 +1,8 @@
 package ingredient;
-
 import global.Contrainte;
-
-import java.util.ArrayList;
 import java.util.List;
 
-public class Alcool implements Liquide{
+public class Alcool implements Ingredient{
 
     private String nom;
     private List<Contrainte> contraintes;

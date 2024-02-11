@@ -1,4 +1,4 @@
 package global;
 
-public interface Filtre {
+public class Filtre {
 }

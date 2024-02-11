@@ -1,10 +1,8 @@
 package ingredient;
-
 import global.Contrainte;
-
 import java.util.List;
 
-public class Soft implements Liquide{
+public class Soft implements Ingredient{
 
     private String nom;
     private List<Contrainte> contraintes;
@@ -13,7 +11,7 @@ public class Soft implements Liquide{
         this.nom = nom;
         this.contraintes = contraintes;
         if (this.contraintes.contains(Contrainte.ALCOOLISE)) {
-            throw new IllegalStateException("La contrainte ALCOOLISE ne peut pas être un Soft.");
+            throw new IllegalStateException("Un soft ne peut pas être alcoolisé.");
         }
     }
 

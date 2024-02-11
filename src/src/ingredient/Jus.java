@@ -1,10 +1,8 @@
 package ingredient;
-
 import global.Contrainte;
-
 import java.util.List;
 
-public class Jus implements Liquide{
+public class Jus implements Ingredient{
 
     private String nom;
     private List<Contrainte> contraintes;
