@@ -1,32 +1,24 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import global.Contrainte;
+import global.Recette;
+import ingredient.Alcool;
+import ingredient.Ingredient;
+import ingredient.Soft;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        /*
-        // Paramètres de connexion à la base de données
+        Ingredient soft = new Soft("Jus d'Orange", new ArrayList<>(List.of(Contrainte.SUCREE)));
+        Ingredient gin = new Alcool("Gin");
 
-        String url = "jdbc:postgresql://localhost:5432/Mix-n-twist";
-        String utilisateur = "postgres";
-        String motDePasse = "kevinclement";
+        Recette r = new Recette("Gin + Orange", new ArrayList<Ingredient>(List.of(soft, gin)));
+        r.ajouteEtape("Mettre 4cl de Gin");
+        r.ajouteEtape("Mélanger");
+        r.ajouteEtape("Mettre 30cl de Jus d'orange", 2);
 
-        // Chargement du pilote JDBC
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return;
-        }
+        System.out.println(r);
 
-        // Établissement de la connexion
-        try (Connection connection = DriverManager.getConnection(url, utilisateur, motDePasse)) {
-            System.out.println("Connexion à la base de données établie avec succès.");
-
-            // À partir de ce point, vous pouvez exécuter des requêtes SQL et effectuer d'autres opérations sur la base de données.
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        */
     }
 }

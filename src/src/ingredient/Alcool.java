@@ -1,5 +1,7 @@
 package ingredient;
 import global.Contrainte;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Alcool implements Ingredient{
@@ -15,6 +17,12 @@ public class Alcool implements Ingredient{
         }
     }
 
+    public Alcool(String nom){
+        this.nom = nom;
+        this.contraintes = new ArrayList<>();
+        this.contraintes.add(Contrainte.ALCOOLISE);
+    }
+
     @Override
     public String getNom() {
         return nom;
@@ -23,6 +31,10 @@ public class Alcool implements Ingredient{
     @Override
     public List<Contrainte> getContraintes() {
         return contraintes;
+    }
+
+    public String toString(){
+        return nom;
     }
 
 }

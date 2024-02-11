@@ -1,5 +1,7 @@
 package ingredient;
 import global.Contrainte;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Soft implements Ingredient{
@@ -15,6 +17,11 @@ public class Soft implements Ingredient{
         }
     }
 
+    public Soft(String nom){
+        this.nom = nom;
+        this.contraintes = new ArrayList<>();
+    }
+
     @Override
     public String getNom() {
         return nom;
@@ -23,5 +30,9 @@ public class Soft implements Ingredient{
     @Override
     public List<Contrainte> getContraintes() {
         return contraintes;
+    }
+
+    public String toString(){
+        return nom;
     }
 }

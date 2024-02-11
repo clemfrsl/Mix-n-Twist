@@ -43,15 +43,14 @@ public class Recette {
     }
 
     public void ajouteEtape(String etape, int pos){
-        this.etapes.add(pos, etape);
+        this.etapes.add(pos-1, etape);
     }
 
     public String montrerEtapes(){
         String result = "";
         int count = 1;
         for (String etape : etapes) {
-            result += "Etape "+ count + " : \n"
-            + etape;
+            result += "Etape "+ count + " : " + etape + "\n";
             count++;
         }
         return result;

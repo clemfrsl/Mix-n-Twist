@@ -21,4 +21,8 @@ public class Jus implements Ingredient{
     public List<Contrainte> getContraintes() {
         return contraintes;
     }
+
+    public String toString(){
+        return nom;
+    }
 }

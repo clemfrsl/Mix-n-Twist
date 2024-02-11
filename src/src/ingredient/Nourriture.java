@@ -28,4 +28,8 @@ public class Nourriture implements Ingredient{
             throw new IllegalStateException("Il faut préciser si la nourriture est sucrée ou salée.");
         }
     }
+
+    public String toString(){
+        return nom;
+    }
 }
