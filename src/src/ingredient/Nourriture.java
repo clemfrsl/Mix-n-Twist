@@ -15,12 +15,12 @@ public class Nourriture implements Ingredient{
 
     @Override
     public String getNom() {
-        return null;
+        return nom;
     }
 
     @Override
     public List<Contrainte> getContraintes() {
-        return null;
+        return contraintes;
     }
 
     private void verification_sucre_sale(){

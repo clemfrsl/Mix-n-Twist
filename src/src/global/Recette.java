@@ -56,6 +56,10 @@ public class Recette {
         return result;
     }
 
+    public String getNom(){
+        return nom;
+    }
+
     public String toString(){
         return nom + "\n" + ingredients + "\n" + getContraintes() + "\n" + montrerEtapes();
     }
