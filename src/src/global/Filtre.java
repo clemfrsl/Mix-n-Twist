@@ -16,7 +16,7 @@ public class Filtre {
         for(Recette recette : recettes){
             int count = -1;
             for(Contrainte contrainte: contraintes){
-                if(recette.getContraintes().contains(contrainte)){
+                if(!recette.getContraintes().contains(contrainte)){
                     count++;
                 }
             }

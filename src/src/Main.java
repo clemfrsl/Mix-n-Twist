@@ -1,4 +1,5 @@
 import global.Contrainte;
+import global.Filtre;
 import global.Recette;
 import ingredient.Alcool;
 import ingredient.Ingredient;
@@ -6,8 +7,8 @@ import ingredient.Nourriture;
 import ingredient.Soft;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -29,35 +30,83 @@ public class Main {
         r2.ajouteEtape("Mélanger");
         r2.ajouteEtape("Mettre 30cl de vodka", 2);
 
-        //System.out.println(r2);
+        Recette r3 = new Recette("Gin Power", new ArrayList<Ingredient>(List.of(fraise, lait, gin)));
+        r3.ajouteEtape("Mettre Fraise et 10cl de lait");
+        r3.ajouteEtape("Mélanger");
+        r3.ajouteEtape("Mettre 10cl de gin");
 
-        List<Recette> rs = new ArrayList<>(List.of(r1, r2));
+        List<Contrainte> allContraintes = new ArrayList<>(List.of(Contrainte.ALCOOLISE, Contrainte.LACTOSE, Contrainte.SUCREE, Contrainte.SUCREE, Contrainte.FRUIT_COQUE));
 
         // Créer un objet Scanner pour lire depuis la console
         Scanner scanner = new Scanner(System.in);
 
-        // Demander à l'utilisateur d'entrer son nom
-        System.out.print("Choisissez une recette : ");
-        int count = 1;
-        for(Recette r : rs){
-            System.out.println( count + " : " + r.getNom());
-            count++;
-        }
-        System.out.println('\n');
+        // TODO - Debut de la demande de la console
+        boolean quitter = false;
+        while (!quitter) {
 
-        // Lancer la demande dans le terminal
-        String choix = scanner.nextLine();
+            List<Recette> recettes = new ArrayList<>(List.of(r1, r2, r3));
 
-        try {
-            int choixInt = Integer.parseInt(choix);
+            /** Utilisation d'un filtre ? **/
 
-            if (choixInt < 0 || choixInt >= rs.size()+1) {
-                System.out.println("Vous n'avez pas choisi un nombre valide.");
-            } else {
-                System.out.println(rs.get(choixInt-1));
+            System.out.print("Voulez-vous utiliser un filtre ? (y/n) (ou tapez 'q' pour quitter) : ");
+            String choix_filtre = scanner.nextLine();
+            if(Objects.equals(choix_filtre, "y")){
+                System.out.print("Lequel ? : \n");
+                int count = 1;
+                for(Contrainte c : allContraintes){
+                    System.out.println(count + " : " + c);
+                    count++;
+                }
+                System.out.println("0 : Quitter\n");
+
+                choix_filtre = scanner.nextLine();
+                if(choix_filtre == "0"){
+                    continue;
+                }
+                else{
+                    Filtre filtre = new Filtre(new ArrayList<Contrainte>(List.of(allContraintes.get(Integer.parseInt(choix_filtre)-1))));
+                    recettes = filtre.filtrer(recettes);
+                }
             }
-        } catch (NumberFormatException e) {
-            System.out.println("Vous n'avez pas choisi un nombre.");
+
+
+
+            /** Recherche d'un recette **/
+
+            System.out.print("Choisissez une recette (ou tapez 'q' pour quitter) : \n");
+            int count = 1;
+
+            for (Recette r : recettes) {
+                System.out.println(count + " : " + r.getNom());
+                count++;
+            }
+            System.out.println("0 : Quitter\n");
+
+            // Lancer la demande dans le terminal
+            String choix = scanner.nextLine();
+
+            try {
+                int choixInt = Integer.parseInt(choix);
+
+                if (choixInt == 0) {
+                    quitter = true;
+                } else if (choixInt < 1 || choixInt > recettes.size()) {
+                    System.out.println("Vous n'avez pas choisi un nombre valide.");
+                } else {
+                    System.out.println(recettes.get(choixInt - 1));
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Vous n'avez pas choisi un nombre.");
+            }
+
+            /** La logique pour revenir en arrière ou refaire une demande **/
+
+            System.out.print("Voulez-vous revenir en arrière ou refaire une demande ? (y/n) : ");
+            String reponse = scanner.nextLine().toLowerCase();
+
+            if (reponse.equals("non") || reponse.equals("n")) {
+                quitter = true;
+            }
         }
 
         // Fermer le Scanner pour éviter les fuites de ressources
