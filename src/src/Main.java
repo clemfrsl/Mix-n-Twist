@@ -68,6 +68,10 @@ public class Main {
                     recettes = filtre.filtrer(recettes);
                 }
             }
+            if(choix_filtre.equals("q")){
+                quitter = true;
+                break;
+            }
 
 
 
@@ -106,6 +110,7 @@ public class Main {
 
             if (reponse.equals("non") || reponse.equals("n")) {
                 quitter = true;
+                break;
             }
         }
 
