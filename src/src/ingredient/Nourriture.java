@@ -23,6 +23,7 @@ public class Nourriture implements Ingredient{
         return contraintes;
     }
 
+    /** Oblige une nourriture a être au moins SUCREE ou SALE **/
     private void verification_sucre_sale(){
         if (!contraintes.contains(Contrainte.SUCREE) && !contraintes.contains(Contrainte.SALE)){
             throw new IllegalStateException("Il faut préciser si la nourriture est sucrée ou salée.");

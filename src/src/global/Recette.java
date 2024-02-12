@@ -33,10 +33,13 @@ public class Recette {
                 }
             }
         }
+        if (!contraintes.contains(Contrainte.ALCOOLISE)){
+            contraintes.add(Contrainte.SANS_ALCOOL);
+        }
         return contraintes;
     }
 
-    // Ajout des étapes, selon si il ya une position précise ou non
+    /** Ajout des étapes, selon si il ya une position précise ou non **/
 
     public void ajouteEtape(String etape){
         this.etapes.add(etape);

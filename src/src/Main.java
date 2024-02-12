@@ -13,38 +13,55 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Ingredient soft = new Soft("Jus d'Orange", new ArrayList<>(List.of(Contrainte.SUCREE)));
+
+        /** Création des objets **/
+        Ingredient orange = new Soft("Jus d'Orange", new ArrayList<>(List.of(Contrainte.SUCREE)));
         Ingredient lait = new Soft("Lait", new ArrayList<>(List.of(Contrainte.SUCREE, Contrainte.LACTOSE)));
-        Ingredient fraise = new Nourriture("Fraise", new ArrayList<>(List.of(Contrainte.SUCREE)));
+        Ingredient pomme = new Nourriture("Pomme", new ArrayList<>(List.of(Contrainte.SUCREE, Contrainte.FRUCTOSE)));
         Ingredient noix = new Nourriture("Noix", new ArrayList<>(List.of(Contrainte.SALE, Contrainte.FRUIT_COQUE)));
         Ingredient gin = new Alcool("Gin");
         Ingredient vodka = new Alcool("Vodka");
+        Ingredient biere = new Alcool("IPA", new ArrayList<>(List.of(Contrainte.GLUTEN)));
 
-        Recette r1 = new Recette("Gin + Orange", new ArrayList<Ingredient>(List.of(soft, gin)));
+        Recette r1 = new Recette("Gin + Orange", new ArrayList<>(List.of(orange, gin)));
         r1.ajouteEtape("Mettre 4cl de Gin");
         r1.ajouteEtape("Mélanger");
         r1.ajouteEtape("Mettre 30cl de Jus d'orange", 2);
 
-        Recette r2 = new Recette("Recette 2", new ArrayList<Ingredient>(List.of(noix, fraise, vodka)));
+        Recette r2 = new Recette("Classique Vodka", new ArrayList<>(List.of(noix, pomme, vodka)));
         r2.ajouteEtape("Mettre Fraise");
         r2.ajouteEtape("Mélanger");
         r2.ajouteEtape("Mettre 30cl de vodka", 2);
 
-        Recette r3 = new Recette("Gin Power", new ArrayList<Ingredient>(List.of(fraise, lait, gin)));
+        Recette r3 = new Recette("Gin Power", new ArrayList<>(List.of(pomme, lait, gin)));
         r3.ajouteEtape("Mettre Fraise et 10cl de lait");
         r3.ajouteEtape("Mélanger");
         r3.ajouteEtape("Mettre 10cl de gin");
 
-        List<Contrainte> allContraintes = new ArrayList<>(List.of(Contrainte.ALCOOLISE, Contrainte.LACTOSE, Contrainte.SUCREE, Contrainte.SUCREE, Contrainte.FRUIT_COQUE));
+        Recette r4 = new Recette("IPA revisité", new ArrayList<>(List.of(biere, orange, pomme)));
+        r4.ajouteEtape("Ajouter ingrédients");
+        r4.ajouteEtape("Mélanger");
 
-        // Créer un objet Scanner pour lire depuis la console
+        Recette r5 = new Recette("Salé !!", new ArrayList<>(List.of(noix, orange, lait)));
+        r5.ajouteEtape("Ajouter ingrédients");
+        r5.ajouteEtape("Mélanger");
+
+        Recette r6 = new Recette("RIP !!", new ArrayList<>(List.of(gin, vodka, biere)));
+        r5.ajouteEtape("Mettre toutes les alcools selon vos prefs");
+        r5.ajouteEtape("Mélanger");
+        r5.ajouteEtape("CUL SEC !!!!");
+
+
+        Contrainte[] allContraintes = Contrainte.values();
+
+        /** Créer un objet Scanner pour lire depuis la console **/
         Scanner scanner = new Scanner(System.in);
 
         // TODO - Debut de la demande de la console
         boolean quitter = false;
         while (!quitter) {
 
-            List<Recette> recettes = new ArrayList<>(List.of(r1, r2, r3));
+            List<Recette> recettes = new ArrayList<>(List.of(r1, r2, r3, r4, r5, r6));
 
             /** Utilisation d'un filtre ? **/
 
@@ -60,11 +77,8 @@ public class Main {
                 System.out.println("0 : Quitter\n");
 
                 choix_filtre = scanner.nextLine();
-                if(choix_filtre == "0"){
-                    continue;
-                }
-                else{
-                    Filtre filtre = new Filtre(new ArrayList<Contrainte>(List.of(allContraintes.get(Integer.parseInt(choix_filtre)-1))));
+                if(!Objects.equals(choix_filtre, "0")){
+                    Filtre filtre = new Filtre(new ArrayList<Contrainte>(List.of(allContraintes[Integer.parseInt(choix_filtre)-1])));
                     recettes = filtre.filtrer(recettes);
                 }
             }
@@ -72,7 +86,6 @@ public class Main {
                 quitter = true;
                 break;
             }
-
 
 
             /** Recherche d'un recette **/
@@ -93,7 +106,7 @@ public class Main {
                 int choixInt = Integer.parseInt(choix);
 
                 if (choixInt == 0) {
-                    quitter = true;
+                    continue;
                 } else if (choixInt < 1 || choixInt > recettes.size()) {
                     System.out.println("Vous n'avez pas choisi un nombre valide.");
                 } else {
@@ -114,7 +127,7 @@ public class Main {
             }
         }
 
-        // Fermer le Scanner pour éviter les fuites de ressources
+        /** Fermer le Scanner pour éviter les fuites de ressources **/
         scanner.close();
 
     }

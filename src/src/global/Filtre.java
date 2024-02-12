@@ -11,6 +11,8 @@ public class Filtre {
         this.contraintes = contraintes;
     }
 
+    /** Méthode pour filtrer les recettes **/
+
     public List<Recette> filtrer(List<Recette> recettes){
         List<Recette> newListRecettes = new ArrayList<>();
         for(Recette recette : recettes){
