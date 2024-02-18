@@ -1,18 +1,20 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DatabaseConnection {
-    public static Connection connect() {
-        try {
-            Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/nom_de_votre_base_de_donnees";
-            String utilisateur = "votre_utilisateur";
-            String motDePasse = "votre_mot_de_passe";
-            return DriverManager.getConnection(url, utilisateur, motDePasse);
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-            return null;
+
+    public static void main( String[] args ) throws SQLException {
+
+        //create connection for a server installed in localhost, with a user "root" with no password
+        try (Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/Mix-n-twist", "root", null)) {
+            // create a Statement
+            try (Statement stmt = conn.createStatement()) {
+                //execute query
+                try (ResultSet rs = stmt.executeQuery("SELECT 'Hello World!'")) {
+                    //position result to first
+                    rs.first();
+                    System.out.println(rs.getString(1)); //result is "Hello World!"
+                }
+            }
         }
     }
 }
