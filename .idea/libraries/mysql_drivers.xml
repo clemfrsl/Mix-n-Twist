@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mysql_drivers">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Downloads/mysql_drivers" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
