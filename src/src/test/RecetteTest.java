@@ -86,6 +86,6 @@ public class RecetteTest {
         assertEquals("Test Recette", recette.getNom());
     }
 
-// a voir mais on peut rajouter des étapes vide, des noms de recette super long ...
+// a voir mais on peut rajouter des étapes vide, des noms de recette super long ....
 }
 
