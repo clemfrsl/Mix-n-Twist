@@ -5,7 +5,7 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
+
 
 import global.Contrainte;
 import global.Filtre;
@@ -83,10 +83,9 @@ public class FiltreTest {
 
         List<Recette> result = filtre.filtrer(recettePasOk);
 
-        //expected : 0, reel : 0 tout est ok
+        // expected : 0, reel : 0 tout est ok
+
         assertEquals(0,result.size());
-
-
 
     }
 
