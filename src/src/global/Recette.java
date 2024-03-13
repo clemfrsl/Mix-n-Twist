@@ -8,17 +8,20 @@ import java.util.List;
 
 public class Recette {
 
+    private int id;
     private String nom;
     private List<Ingredient> ingredients;
     private LinkedList<String> etapes;
 
-    public Recette(String nom, List<Ingredient> ingredients, LinkedList<String> etapes){
+    public Recette(int id, String nom, List<Ingredient> ingredients, LinkedList<String> etapes){
+        this.id = id;
         this.nom = nom;
         this.ingredients = ingredients;
         this.etapes = etapes;
     }
 
-    public Recette(String nom, List<Ingredient> ingredients){
+    public Recette(int id, String nom, List<Ingredient> ingredients){
+        this.id = id;
         this.nom = nom;
         this.ingredients = ingredients;
         this.etapes = new LinkedList<>();
@@ -59,6 +62,10 @@ public class Recette {
         return result;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getNom(){
         return nom;
     }
@@ -66,4 +73,6 @@ public class Recette {
     public String toString(){
         return nom + "\n" + ingredients + "\n" + getContraintes() + "\n" + montrerEtapes();
     }
+
+
 }

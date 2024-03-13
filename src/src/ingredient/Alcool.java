@@ -24,7 +24,8 @@ public class Alcool implements Ingredient{
         }
     }
 
-    public Alcool(String nom){
+    public Alcool(int id, String nom){
+        this.id = id;
         this.nom = nom;
         this.contraintes = new ArrayList<>();
         this.contraintes.add(Contrainte.ALCOOLISE);

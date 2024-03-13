@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Database {
 
-    String user, password, url;
-    Connection connection;
+    private String user, password, url;
+    private Connection connection;
 
     public Database(String user, String password) throws SQLException {
         this.url = "jdbc:mysql://localhost:3306/mix-n-twist";
@@ -24,9 +24,8 @@ public class Database {
         connection.close();
     }
 
-    // todo : penser à remplacer par recette et surtout voir comment renvoyer la donnée
     public ResultSet rechercheParNom(String nom) {
-        String request = "SELECT * FROM Ingredient WHERE nom LIKE '%" + nom + "%';";
+        String request = "SELECT * FROM Recette WHERE nom LIKE '%" + nom + "%';";
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             return stmt.executeQuery(request);
@@ -36,7 +35,7 @@ public class Database {
         return null;
     }
 
-    public void ajouterContraintes(){
+    /*public void ajouterContraintes(){
         String request = "SELECT * FROM Contrainte;";
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -59,6 +58,32 @@ public class Database {
         for(Contrainte c : Contrainte.values()){
             System.out.println(c);
         }
+    }*/
+
+    public ResultSet recupererRecette(){
+        String request = "SELECT * FROM Recette;";
+        try {
+            Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            return stmt.executeQuery(request);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    public ResultSet recupererRecetteIngredient(int idRecette){
+        String request = "SELECT * FROM ingredientRecette WHERE id_recette = " + idRecette + ";";
+        try {
+            Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            return stmt.executeQuery(request);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    public Connection getConnection(){
+        return connection;
     }
 
 }

@@ -17,13 +17,13 @@ public class Main {
 
         /** Création des objets **/
 
-        Ingredient orange = new Soft("Jus d'Orange", new ArrayList<>(List.of(Contrainte.SUCREE)));
-        Ingredient lait = new Soft("Lait", new ArrayList<>(List.of(Contrainte.SUCREE, Contrainte.LACTOSE)));
-        Ingredient pomme = new Nourriture("Pomme", new ArrayList<>(List.of(Contrainte.SUCREE, Contrainte.FRUCTOSE)));
-        Ingredient noix = new Nourriture("Noix", new ArrayList<>(List.of(Contrainte.SALE, Contrainte.FRUIT_COQUE)));
-        Ingredient gin = new Alcool("Gin");
-        Ingredient vodka = new Alcool("Vodka");
-        Ingredient biere = new Alcool("IPA", id, new ArrayList<>(List.of(Contrainte.GLUTEN)));
+        Ingredient orange = new Soft(1, "Jus d'Orange", new ArrayList<>(List.of(Contrainte.SUCREE)));
+        Ingredient lait = new Soft(2, "Lait", new ArrayList<>(List.of(Contrainte.SUCREE, Contrainte.LACTOSE)));
+        Ingredient pomme = new Nourriture(3, "Pomme", new ArrayList<>(List.of(Contrainte.SUCREE, Contrainte.FRUCTOSE)));
+        Ingredient noix = new Nourriture(4, "Noix", new ArrayList<>(List.of(Contrainte.SALE, Contrainte.FRUIT_COQUE)));
+        Ingredient gin = new Alcool(6, "Gin");
+        Ingredient vodka = new Alcool(5, "Vodka");
+        Ingredient biere = new Alcool(7, "IPA", new ArrayList<>(List.of(Contrainte.GLUTEN)));
 
         Recette r1 = new Recette("Gin + Orange", new ArrayList<>(List.of(orange, gin)));
         r1.ajouteEtape("Mettre 4cl de Gin");
