@@ -25,30 +25,30 @@ public class Main {
         Ingredient vodka = new Alcool(5, "Vodka");
         Ingredient biere = new Alcool(7, "IPA", new ArrayList<>(List.of(Contrainte.GLUTEN)));
 
-        Recette r1 = new Recette("Gin + Orange", new ArrayList<>(List.of(orange, gin)));
+        Recette r1 = new Recette(1, "Gin + Orange", new ArrayList<>(List.of(orange, gin)));
         r1.ajouteEtape("Mettre 4cl de Gin");
         r1.ajouteEtape("Mélanger");
         r1.ajouteEtape("Mettre 30cl de Jus d'orange", 2);
 
-        Recette r2 = new Recette("Classique Vodka", new ArrayList<>(List.of(noix, pomme, vodka)));
+        Recette r2 = new Recette(2, "Classique Vodka", new ArrayList<>(List.of(noix, pomme, vodka)));
         r2.ajouteEtape("Mettre Fraise");
         r2.ajouteEtape("Mélanger");
         r2.ajouteEtape("Mettre 30cl de vodka", 2);
 
-        Recette r3 = new Recette("Gin Power", new ArrayList<>(List.of(pomme, lait, gin)));
+        Recette r3 = new Recette(3, "Gin Power", new ArrayList<>(List.of(pomme, lait, gin)));
         r3.ajouteEtape("Mettre Fraise et 10cl de lait");
         r3.ajouteEtape("Mélanger");
         r3.ajouteEtape("Mettre 10cl de gin");
 
-        Recette r4 = new Recette("IPA revisité", new ArrayList<>(List.of(biere, orange, pomme)));
+        Recette r4 = new Recette(4, "IPA revisité", new ArrayList<>(List.of(biere, orange, pomme)));
         r4.ajouteEtape("Ajouter ingrédients");
         r4.ajouteEtape("Mélanger");
 
-        Recette r5 = new Recette("Salé !!", new ArrayList<>(List.of(noix, orange, lait)));
+        Recette r5 = new Recette(5, "Salé !!", new ArrayList<>(List.of(noix, orange, lait)));
         r5.ajouteEtape("Ajouter ingrédients");
         r5.ajouteEtape("Mélanger");
 
-        Recette r6 = new Recette("RIP !!", new ArrayList<>(List.of(gin, vodka, biere)));
+        Recette r6 = new Recette(6, "RIP !!", new ArrayList<>(List.of(gin, vodka, biere)));
         r5.ajouteEtape("Mettre toutes les alcools selon vos prefs");
         r5.ajouteEtape("Mélanger");
         r5.ajouteEtape("CUL SEC !!!!");

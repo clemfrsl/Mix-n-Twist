@@ -9,4 +9,6 @@ public interface Ingredient {
     int getID();
     List<Contrainte> getContraintes();
 
+
+
 }

@@ -82,6 +82,17 @@ public class Database {
         return null;
     }
 
+    public ResultSet recupererTypeIngredient(){
+        String request = "SELECT * FROM TypeIngredient;";
+        try {
+            Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            return stmt.executeQuery(request);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
     public Connection getConnection(){
         return connection;
     }
