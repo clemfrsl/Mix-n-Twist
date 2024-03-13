@@ -7,12 +7,14 @@ import java.util.List;
 public class Alcool implements Ingredient{
 
     private String nom;
+    private int id;
     private List<Contrainte> contraintes;
 
     /** Constructeur obligant d'avoir la contrainte ALCOOLISE et erreur si SANS_ALCOOL **/
 
-    public Alcool(String nom, List<Contrainte> contraintes){
+    public Alcool(int id, String nom, List<Contrainte> contraintes){
         this.nom = nom;
+        this.id = id;
         this.contraintes = contraintes;
         if (!this.contraintes.contains(Contrainte.ALCOOLISE)){
             this.contraintes.add(Contrainte.ALCOOLISE);
@@ -31,6 +33,11 @@ public class Alcool implements Ingredient{
     @Override
     public String getNom() {
         return nom;
+    }
+
+    @Override
+    public int getID() {
+        return id;
     }
 
     @Override

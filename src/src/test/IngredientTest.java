@@ -25,7 +25,7 @@ public class IngredientTest {
     @Before
     public void setUp() {
         ingredients = new ArrayList<>();
-        ingredients.add(new Alcool("Rhum", List.of(Contrainte.ALCOOLISE)));
+        ingredients.add(new Alcool("Rhum", id, List.of(Contrainte.ALCOOLISE)));
         ingredients.add(new Nourriture("Sucre", List.of(Contrainte.SUCREE)));
         ingredients.add(new Soft("Jus Orange", List.of(Contrainte.SANS_ALCOOL)));
     }
@@ -44,7 +44,7 @@ public class IngredientTest {
     //test recup contraintes
     @Test
     public void testGetContraintes() {
-        Ingredient ingredient = new Alcool("Rhum", List.of(Contrainte.ALCOOLISE));
+        Ingredient ingredient = new Alcool("Rhum", id, List.of(Contrainte.ALCOOLISE));
         assertEquals(List.of(Contrainte.ALCOOLISE), ingredient.getContraintes());
     }
 

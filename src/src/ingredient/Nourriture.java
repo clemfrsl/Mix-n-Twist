@@ -5,10 +5,12 @@ import java.util.List;
 public class Nourriture implements Ingredient{
 
     private String nom;
+    private int id;
     private List<Contrainte> contraintes;
 
-    public Nourriture(String nom, List<Contrainte> contraintes){
+    public Nourriture(int id, String nom, List<Contrainte> contraintes){
         this.nom = nom;
+        this.id = id;
         this.contraintes = contraintes;
         verification_sucre_sale();
     }
@@ -16,6 +18,11 @@ public class Nourriture implements Ingredient{
     @Override
     public String getNom() {
         return nom;
+    }
+
+    @Override
+    public int getID() {
+        return id;
     }
 
     @Override

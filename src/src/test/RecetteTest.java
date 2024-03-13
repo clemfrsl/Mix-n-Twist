@@ -35,7 +35,7 @@ public class RecetteTest {
     public void setUp() {
         // ingrédients pour la recette
         List<Ingredient> ingredients = new ArrayList<>();
-        ingredients.add(new Alcool("Rhum", List.of(Contrainte.ALCOOLISE)));
+        ingredients.add(new Alcool("Rhum", id, List.of(Contrainte.ALCOOLISE)));
         ingredients.add(new Nourriture("Sucre", List.of(Contrainte.SUCREE)));
         ingredients.add(new Soft("Jus Orange", List.of(Contrainte.SANS_ALCOOL)));
 

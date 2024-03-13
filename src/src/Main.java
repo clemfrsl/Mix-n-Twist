@@ -14,14 +14,16 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+
         /** Création des objets **/
+
         Ingredient orange = new Soft("Jus d'Orange", new ArrayList<>(List.of(Contrainte.SUCREE)));
         Ingredient lait = new Soft("Lait", new ArrayList<>(List.of(Contrainte.SUCREE, Contrainte.LACTOSE)));
         Ingredient pomme = new Nourriture("Pomme", new ArrayList<>(List.of(Contrainte.SUCREE, Contrainte.FRUCTOSE)));
         Ingredient noix = new Nourriture("Noix", new ArrayList<>(List.of(Contrainte.SALE, Contrainte.FRUIT_COQUE)));
         Ingredient gin = new Alcool("Gin");
         Ingredient vodka = new Alcool("Vodka");
-        Ingredient biere = new Alcool("IPA", new ArrayList<>(List.of(Contrainte.GLUTEN)));
+        Ingredient biere = new Alcool("IPA", id, new ArrayList<>(List.of(Contrainte.GLUTEN)));
 
         Recette r1 = new Recette("Gin + Orange", new ArrayList<>(List.of(orange, gin)));
         r1.ajouteEtape("Mettre 4cl de Gin");
@@ -129,7 +131,6 @@ public class Main {
 
         /** Fermer le Scanner pour éviter les fuites de ressources **/
         scanner.close();
-
     }
 
 }

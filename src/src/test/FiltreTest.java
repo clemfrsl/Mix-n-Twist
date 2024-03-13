@@ -42,7 +42,7 @@ public class FiltreTest {
         recettes = new ArrayList<>();
         // 1
         List<Ingredient> ingredients1 = new ArrayList<>();
-        ingredients1.add(new Alcool("Rhum", List.of(Contrainte.ALCOOLISE)));
+        ingredients1.add(new Alcool("Rhum", id, List.of(Contrainte.ALCOOLISE)));
         ingredients1.add(new Nourriture("Sucre", List.of(Contrainte.SUCREE)));
         Recette recette1 = new Recette("Punch", ingredients1, new LinkedList<>());
         recette1.ajouteEtape("Mélanger rhum avec sucre.");
@@ -100,7 +100,7 @@ public class FiltreTest {
 
         // Recette plusieurs contraintes
         List<Ingredient> ingredientsRecette = new ArrayList<>();
-        ingredientsRecette.add(new Alcool("Vovo", List.of(Contrainte.ALCOOLISE)));
+        ingredientsRecette.add(new Alcool("Vovo", id, List.of(Contrainte.ALCOOLISE)));
         ingredientsRecette.add(new Nourriture("Sucre", List.of(Contrainte.SUCREE)));
         Recette recette1 = new Recette("Vodka Sucre", ingredientsRecette, new LinkedList<>());
         recettesAvecContraintes.add(recette1);

@@ -22,7 +22,7 @@ public class AlcoolTest {
     //mise en place
     @Before
     public void setUp() {
-        alcool = new Alcool("Rhum", List.of(Contrainte.ALCOOLISE));
+        alcool = new Alcool("Rhum", id, List.of(Contrainte.ALCOOLISE));
     }
 
 

@@ -1,3 +1,6 @@
+import global.Contrainte;
+
+import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.List;
 
@@ -31,6 +34,31 @@ public class Database {
             throwables.printStackTrace();
         }
         return null;
+    }
+
+    public void ajouterContraintes(){
+        String request = "SELECT * FROM Contrainte;";
+        try {
+            Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet contraintes = stmt.executeQuery(request);
+            while (contraintes.next()) {
+                String nomContrainte = contraintes.getString("nom_contrainte");
+
+                try {
+                    Contrainte contrainteEnum = Contrainte.valueOf(nomContrainte.toUpperCase());
+                    // Vous pouvez maintenant utiliser contrainteEnum comme une constante de l'énumération
+                    // ...
+                } catch (IllegalArgumentException e) {
+                    // Gérer le cas où le nom de contrainte n'existe pas dans l'énumération
+                    System.out.println("Contrainte inconnue : " + nomContrainte);
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        for(Contrainte c : Contrainte.values()){
+            System.out.println(c);
+        }
     }
 
 }

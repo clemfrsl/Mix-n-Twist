@@ -1,3 +1,5 @@
+import global.Contrainte;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -10,6 +12,8 @@ public class Test {
         while (resultSet.next()) {
             System.out.println(resultSet.getString("nom"));
         }
+        db.ajouterContraintes();
+
         resultSet.close();
     }
 
