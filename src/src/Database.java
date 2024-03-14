@@ -2,6 +2,7 @@ import global.Contrainte;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Database {
@@ -87,6 +88,29 @@ public class Database {
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             return stmt.executeQuery(request);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    public LinkedList<String> recupererEtapeRecette (int idRecette){
+        String request = "SELECT * FROM Etape WHERE idRecette = "+ idRecette+";";
+        try {
+            Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet resultSet = stmt.executeQuery(request);
+            resultSet.last();
+            int longueur = resultSet.getRow();
+            resultSet.beforeFirst();
+            String[] etapes = new String[longueur];
+            while (resultSet.next()){ // todo a poffiner
+                etapes[resultSet.getInt("numeroEtape")-1] = resultSet.getString("consigne");
+            }
+            LinkedList<String> etapesList = new LinkedList<>();
+            for (int index=0; index<longueur; index++){
+                etapesList.add(etapes[index]);
+            }
+            return etapesList;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
