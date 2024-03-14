@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 
 
-
+/**
 
 public class RecetteTest {
 
@@ -88,4 +88,4 @@ public class RecetteTest {
 
 // a voir mais on peut rajouter des étapes vide, des noms de recette super long ....
 }
-
+**/

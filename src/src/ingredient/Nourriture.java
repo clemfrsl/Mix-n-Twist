@@ -2,6 +2,9 @@ package ingredient;
 import global.Contrainte;
 import java.util.List;
 
+
+
+
 public class Nourriture implements Ingredient{
 
     private String nom;

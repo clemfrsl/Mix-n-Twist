@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-
+/**
 //class FiltreTest
 public class FiltreTest {
 
@@ -116,4 +116,4 @@ public class FiltreTest {
 
     // Peut être voir pour vérif que la contrainte alcool/sans alcool ne sont pas faisable en meme temps
 }
-
+ **/

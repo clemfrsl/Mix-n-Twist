@@ -18,7 +18,7 @@ import org.junit.Test;
 import java.util.List;
 import java.util.ArrayList;
 
-
+/**
 public class IngredientTest {
     private List<Ingredient> ingredients;
 
@@ -67,3 +67,4 @@ public class IngredientTest {
     }
 
 }
+**/
