@@ -11,6 +11,8 @@ import java.util.List;
 
 public class Creation {
 
+    /** Crée toutes les recettes de la BD **/
+
     public static List<Recette> creationRecettes(Database database) throws SQLException {
         List<Recette> recettes = new ArrayList<>();
         ResultSet recettesData = database.recupererRecette();
@@ -23,9 +25,10 @@ public class Creation {
             // todo recuperer les ingredients et les etapes
             recettes.add(new Recette(idRecette, nomRecette, ingredients));
         }
-        return null;
+        return recettes;
     }
 
+    /** Crée tous les ingredients de la BD **/
 
     public static HashMap<String, List<Ingredient>> creationIngredients(Database database) throws Exception {
         HashMap<String, List<Ingredient>> ingredients = new HashMap<>();
@@ -42,14 +45,17 @@ public class Creation {
             String nomIngredient = ingredientData.getString("nom");
             ResultSet ingredientsData = database.recupererRecetteIngredient(idIngredient);
             String type = types.get(ingredientData.getInt("id_type"));
+            List<Contrainte> contrainteIngredient = new ArrayList<Contrainte>();
             // todo recuperer les contraintes
 
-            ingredients.get(type).add((Ingredient) Creation.newIngredient(type, idIngredient, nomIngredient, new ArrayList<Contrainte>()));
+
+            ingredients.get(type).add((Ingredient) Creation.newIngredient(type, idIngredient, nomIngredient, contrainteIngredient));
 
         }
-        return null;
+        return ingredients;
     }
 
+    /** Crée un ingredient suivant son type **/
 
     public static Object newIngredient(String classeNom, int id, String nom, List<Contrainte> contraintes) throws Exception {
         Class<?> clazz = Class.forName("global." + classeNom);
