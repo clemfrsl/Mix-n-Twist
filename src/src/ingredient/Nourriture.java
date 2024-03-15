@@ -15,7 +15,7 @@ public class Nourriture implements Ingredient{
         this.nom = nom;
         this.id = id;
         this.contraintes = contraintes;
-        verification_sucre_sale();
+        //verification_sucre_sale();
     }
 
     @Override

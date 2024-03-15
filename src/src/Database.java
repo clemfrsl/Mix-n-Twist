@@ -12,7 +12,7 @@ public class Database {
     private String user, password, url;
     private Connection connection;
 
-    public Database(String user, String password) throws SQLException {
+    public Database() throws SQLException {
         this.url = "jdbc:mysql://localhost:3306/mix-n-twist";
         this.user = "M1";
         this.password = "mixntwist";
@@ -44,6 +44,19 @@ public class Database {
 
     public ResultSet recupererRecette(){
         String request = "SELECT * FROM Recette;";
+        try {
+            Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            return stmt.executeQuery(request);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    /** Permet de récuperer toutes les recettes **/
+
+    public ResultSet recupererIngredients(){
+        String request = "SELECT * FROM Ingredient;";
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             return stmt.executeQuery(request);
@@ -97,6 +110,7 @@ public class Database {
             for (int index=0; index<longueur; index++){
                 etapesList.add(etapes[index]);
             }
+            resultSet.close();
             return etapesList;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -116,6 +130,8 @@ public class Database {
             while(resultSet.next()){
                 contraintesIngredient.add(contraintes.get(resultSet.getInt("id_contraintes")));
             }
+
+            resultSet.close();
             return contraintesIngredient;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -139,6 +155,7 @@ public class Database {
                     }
                 }
             }
+            resultSet.close();
             return contraintes;
 
         } catch (SQLException throwables) {
