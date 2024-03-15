@@ -15,17 +15,29 @@ public class Creation {
 
     /** Crée toutes les recettes de la BD **/
 
-    public static List<Recette> creationRecettes(Database database) throws SQLException {
+    public static List<Recette> creationRecettes(Database database, HashMap<String, List<Ingredient>> ingredients) throws SQLException {
         List<Recette> recettes = new ArrayList<>();
         ResultSet recettesData = database.recupererRecette();
+
         while (recettesData.next()) {
             int idRecette = recettesData.getInt("id_recette");
-            String nomRecette = recettesData.getString("nom");
+            String nomRecette = recettesData.getString("nom_recette");
             ResultSet ingredientsData = database.recupererRecetteIngredient(idRecette);
-            List<Ingredient> ingredients = new ArrayList<>();
-            LinkedList etapes = database.recupererEtapeRecette(idRecette);
-            // todo recuperer les ingredients et les etapes
-            recettes.add(new Recette(idRecette, nomRecette, ingredients, etapes));
+            List<Ingredient> ingredientsRecette = new ArrayList<>();
+            while (ingredientsData.next()){
+                for(List<Ingredient> listIngredient: ingredients.values()){
+                    for(Ingredient i : listIngredient){
+                        if(i.getID() == ingredientsData.getInt("id_ingredient")){
+                            ingredientsRecette.add(i);
+                            break;
+                        }
+                    }
+
+                }
+            }
+
+            LinkedList etapesRecette = database.recupererEtapeRecette(idRecette);
+            recettes.add(new Recette(idRecette, nomRecette, ingredientsRecette, etapesRecette));
         }
         return recettes;
     }
@@ -34,12 +46,10 @@ public class Creation {
 
     public static HashMap<String, List<Ingredient>> creationIngredients(Database database) throws Exception {
         HashMap<String, List<Ingredient>> ingredients = new HashMap<>();
-        HashMap<Integer, String> types = new HashMap<>();
+        HashMap<Integer, String> types = database.recupererTypeIngredient();
         ResultSet ingredientData = database.recupererIngredients();
-        ResultSet typeIngredient = database.recupererTypeIngredient();
-        while (typeIngredient.next()){
-            ingredients.put(typeIngredient.getString("typeIngredient"), new ArrayList<>());
-            types.put(typeIngredient.getInt("id_typeIngredient"), typeIngredient.getString("typeIngredient"));
+        for(String type : types.values()){
+            ingredients.put(type, new ArrayList<>());
         }
 
         while (ingredientData.next()) {
@@ -50,7 +60,6 @@ public class Creation {
             ingredients.get(type).add((Ingredient) Creation.newIngredient(type, idIngredient, nomIngredient, contrainteIngredient));
         }
         ingredientData.close();
-        typeIngredient.close();
         return ingredients;
     }
 

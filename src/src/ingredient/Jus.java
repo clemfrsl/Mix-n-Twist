@@ -29,6 +29,11 @@ public class Jus implements Ingredient{
         return contraintes;
     }
 
+    @Override
+    public String getClasseNom(){
+        return "Jus";
+    }
+
     public String toString(){
         return nom;
     }

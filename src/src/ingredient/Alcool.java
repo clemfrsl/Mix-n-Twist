@@ -50,4 +50,9 @@ public class Alcool implements Ingredient{
         return nom;
     }
 
+    @Override
+    public String getClasseNom(){
+        return "Alcool";
+    }
+
 }

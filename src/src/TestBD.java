@@ -1,3 +1,4 @@
+import global.Recette;
 import ingredient.Ingredient;
 
 import java.util.HashMap;
@@ -20,6 +21,11 @@ public class TestBD {
             for(Ingredient i: list){
                 System.out.println(i);
             }
+        }
+
+        List<Recette> recettes = Creation.creationRecettes(bd, ingredients);
+        for(Recette r: recettes){
+            System.out.println(r);
         }
 
     }

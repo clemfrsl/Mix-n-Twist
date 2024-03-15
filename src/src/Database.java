@@ -69,7 +69,7 @@ public class Database {
     /** Permet de récuperer tous les ingredients d'une recette donnée **/
 
     public ResultSet recupererRecetteIngredient(int idRecette){
-        String request = "SELECT * FROM ingredientRecette WHERE id_recette = " + idRecette + ";";
+        String request = "SELECT * FROM recetteIngredient WHERE id_recette = " + idRecette + ";";
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             return stmt.executeQuery(request);
@@ -81,11 +81,17 @@ public class Database {
 
     /** Permet de récuperer tous les types d'ingredients **/
 
-    public ResultSet recupererTypeIngredient(){
+    public HashMap<Integer, String> recupererTypeIngredient(){
         String request = "SELECT * FROM TypeIngredient;";
+        HashMap<Integer, String> types = new HashMap<>();
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            return stmt.executeQuery(request);
+            ResultSet typeIngredient =  stmt.executeQuery(request);
+            while (typeIngredient.next()){
+                types.put(typeIngredient.getInt("id_typeIngredient"), typeIngredient.getString("typeIngredient"));
+            }
+            typeIngredient.close();
+            return types;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -95,7 +101,7 @@ public class Database {
     /** Permet de récuperer les étapes d'une recette données en LinkedList **/
 
     public LinkedList<String> recupererEtapeRecette (int idRecette){
-        String request = "SELECT * FROM recetteEtapes WHERE idRecette = "+ idRecette+";";
+        String request = "SELECT * FROM recetteEtapes WHERE id_recette = "+ idRecette+";";
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet resultSet = stmt.executeQuery(request);

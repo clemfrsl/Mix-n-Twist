@@ -8,7 +8,5 @@ public interface Ingredient {
     String getNom();
     int getID();
     List<Contrainte> getContraintes();
-
-
-
+    String getClasseNom();
 }

@@ -40,6 +40,11 @@ public class Nourriture implements Ingredient{
         }
     }
 
+    @Override
+    public String getClasseNom(){
+        return "Nourriture";
+    }
+
     public String toString(){
         return nom;
     }

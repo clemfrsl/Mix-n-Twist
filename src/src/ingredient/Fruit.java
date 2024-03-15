@@ -34,4 +34,9 @@ public class Fruit implements Ingredient{
     public String toString(){
         return nom;
     }
+
+    @Override
+    public String getClasseNom(){
+        return "Fruit";
+    }
 }
