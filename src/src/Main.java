@@ -1,5 +1,4 @@
 import global.Contrainte;
-import global.Filtre;
 import global.Recette;
 import ingredient.Alcool;
 import ingredient.Ingredient;
@@ -80,8 +79,7 @@ public class Main {
 
                 choix_filtre = scanner.nextLine();
                 if(!Objects.equals(choix_filtre, "0")){
-                    Filtre filtre = new Filtre(new ArrayList<Contrainte>(List.of(allContraintes[Integer.parseInt(choix_filtre)-1])));
-                    recettes = filtre.filtrer(recettes);
+                    recettes = Recette.filtrer(recettes, List.of(allContraintes[Integer.parseInt(choix_filtre)-1]));
                 }
             }
             if(choix_filtre.equals("q")){

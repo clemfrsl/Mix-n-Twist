@@ -7,21 +7,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
-import global.Contrainte;
-import global.Filtre;
-import global.Recette;
-import ingredient.Alcool;
-import ingredient.Ingredient;
-import ingredient.Nourriture;
-import ingredient.Soft;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ArrayList;
-
-
 /**
 //class FiltreTest
 public class FiltreTest {

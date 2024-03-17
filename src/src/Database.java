@@ -1,6 +1,4 @@
 import global.Contrainte;
-
-import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
