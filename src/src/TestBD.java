@@ -16,17 +16,20 @@ public class TestBD {
 
         resultSet.close();*/
 
-        HashMap<String, List<Ingredient>> ingredients = Creation.creationIngredients(bd);
+        HashMap<String, List<Ingredient>> ingredients = Utilisation.creationIngredients(bd);
         for(List<Ingredient> list: ingredients.values()){
             for(Ingredient i: list){
                 System.out.println(i);
             }
         }
 
-        List<Recette> recettes = Creation.creationRecettes(bd, ingredients);
+        List<Recette> recettes = Utilisation.creationRecettes(bd, ingredients);
+        //recettes = Utilisation.rechercheParNom(bd, recettes, "di");
         for(Recette r: recettes){
             System.out.println(r);
         }
+
+
 
     }
 

@@ -74,24 +74,6 @@ public class Recette {
         return nom + "\n" + ingredients + "\n" + getContraintes() + "\n" + montrerEtapes();
     }
 
-
-    /** Méthode pour filtrer les recettes **/
-
-    public static List<Recette> filtrer(List<Recette> recettes, List<Contrainte> contraintes){
-        List<Recette> newListRecettes = new ArrayList<>();
-        for(Recette recette : recettes){
-            int count = -1;
-            for(Contrainte contrainte: contraintes){
-                if(!recette.getContraintes().contains(contrainte)){
-                    count++;
-                }
-            }
-            if (count == -1){
-                newListRecettes.add(recette);
-            }
-        }
-        return newListRecettes;
-    }
 }
 
 

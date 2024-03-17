@@ -27,8 +27,8 @@ public class Database {
 
     /** Permet d'effectuer une recherche par nom dans les recettes **/
     //todo : à poffiner
-    public ResultSet rechercheParNom(String nom) {
-        String request = "SELECT * FROM Recette WHERE nom LIKE '%" + nom + "%';";
+    public ResultSet rechercheParNomData(String nom) {
+        String request = "SELECT * FROM Recette WHERE nom_recette LIKE '%" + nom + "%';";
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             return stmt.executeQuery(request);

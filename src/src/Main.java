@@ -79,7 +79,7 @@ public class Main {
 
                 choix_filtre = scanner.nextLine();
                 if(!Objects.equals(choix_filtre, "0")){
-                    recettes = Recette.filtrer(recettes, List.of(allContraintes[Integer.parseInt(choix_filtre)-1]));
+                    recettes = Utilisation.filtrer(recettes, List.of(allContraintes[Integer.parseInt(choix_filtre)-1]));
                 }
             }
             if(choix_filtre.equals("q")){
