@@ -11,7 +11,7 @@ public class Database {
     private Connection connection;
 
     public Database() throws SQLException {
-        this.url = "jdbc:mysql://localhost:3306/mix-n-twist";
+        this.url = "jdbc:mysql://localhost/mix-n-twist";
         this.user = "M1";
         this.password = "mixntwist";
         connection();
