@@ -153,7 +153,7 @@ public class Database {
             ResultSet resultSet = stmt.executeQuery(request);
             while (resultSet.next()){
                 for (Contrainte c : Contrainte.values()){
-                    if (c.name() == resultSet.getString("contrainte")){
+                    if (c.name().equals(resultSet.getString("contrainte"))){
                         contraintes.put(resultSet.getInt("id_contraintes"), c);
                         break;
                     }

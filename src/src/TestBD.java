@@ -16,6 +16,7 @@ public class TestBD {
 
         resultSet.close();*/
 
+        System.out.println(bd.recupererContraintes());
         HashMap<String, List<Ingredient>> ingredients = Utilisation.creationIngredients(bd);
         for(List<Ingredient> list: ingredients.values()){
             for(Ingredient i: list){

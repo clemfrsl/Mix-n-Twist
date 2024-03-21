@@ -70,6 +70,8 @@ public class Recette {
         return nom;
     }
 
+    public List<Ingredient> getIngredients(){return ingredients;}
+
     public String toString(){
         return nom + "\n" + ingredients + "\n" + getContraintes() + "\n" + montrerEtapes();
     }

@@ -106,4 +106,24 @@ public class Utilisation {
         return recetteFiltrer;
     }
 
+    /** Permet d'effectuer une recherche par ingredients dans les recettes **/
+
+    public static List<Recette> rechercheParIngredients(Database database, List<Recette> recettes, List<Ingredient> ingredients, int nombreIngredients) {
+        List<Recette> recettesFiltrer = new ArrayList<>();
+        for(Recette recette: recettes){
+            int compteur = 0;
+            for(Ingredient ingredientRecette: recette.getIngredients()){
+                if(ingredients.contains(ingredientRecette)){
+                    compteur++;
+                }
+                if(compteur == nombreIngredients){
+                    recettesFiltrer.add(recette);
+                    break;
+                }
+            }
+        }
+
+        return recettesFiltrer;
+    }
+
 }
