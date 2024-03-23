@@ -26,7 +26,6 @@ public class Database {
     }
 
     /** Permet d'effectuer une recherche par nom dans les recettes **/
-    //todo : à poffiner
     public ResultSet rechercheParNomData(String nom) {
         String request = "SELECT * FROM Recette WHERE nom_recette LIKE '%" + nom + "%';";
         try {
