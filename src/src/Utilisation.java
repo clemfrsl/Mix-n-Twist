@@ -55,7 +55,7 @@ public class Utilisation {
         while (ingredientData.next()) {
             int idIngredient = ingredientData.getInt("id_ingredient");
             String nomIngredient = ingredientData.getString("nom_ingredient");
-            String type = types.get(ingredientData.getInt("type_ingredient"));
+            String type = types.get(ingredientData.getInt("id_typeingredient"));
             List<Contrainte> contrainteIngredient = database.recupererContrainteIngredient(ingredientData.getInt("id_ingredient"));
             ingredients.get(type).add((Ingredient) Utilisation.newIngredient(type, idIngredient, nomIngredient, contrainteIngredient));
         }

@@ -40,7 +40,7 @@ public class Database {
     /** Permet de récuperer toutes les recettes **/
 
     public ResultSet recupererRecette(){
-        String request = "SELECT * FROM Recette;";
+        String request = "SELECT * FROM Recettes;";
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             return stmt.executeQuery(request);
@@ -53,7 +53,7 @@ public class Database {
     /** Permet de récuperer toutes les recettes **/
 
     public ResultSet recupererIngredients(){
-        String request = "SELECT * FROM Ingredient;";
+        String request = "SELECT * FROM Ingredients;";
         try {
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             return stmt.executeQuery(request);
@@ -131,7 +131,7 @@ public class Database {
             HashMap<Integer, Contrainte> contraintes = recupererContraintes();
             ResultSet resultSet = stmt.executeQuery(request);
             while(resultSet.next()){
-                contraintesIngredient.add(contraintes.get(resultSet.getInt("id_contraintes")));
+                contraintesIngredient.add(contraintes.get(resultSet.getInt("id_contrainte")));
             }
 
             resultSet.close();
@@ -153,7 +153,7 @@ public class Database {
             while (resultSet.next()){
                 for (Contrainte c : Contrainte.values()){
                     if (c.name().equals(resultSet.getString("contrainte"))){
-                        contraintes.put(resultSet.getInt("id_contraintes"), c);
+                        contraintes.put(resultSet.getInt("id_contrainte"), c);
                         break;
                     }
                 }
